@@ -1,13 +1,40 @@
 {
-	"name": "vsc-extension-samples",
-	"publisher": "Microsoft",
+	"name": "helloworld-sample",
+	"displayName": "helloworld-sample",
+	"description": "HelloWorld example for VS Code",
 	"version": "0.0.1",
+	"publisher": "vscode-samples",
+	"repository": "https://github.com/Microsoft/vscode-extension-samples/helloworld-sample",
+	"engines": {
+		"vscode": "^1.34.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.helloWorld"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.helloWorld",
+				"title": "Hello World"
+			}
+		]
+	},
 	"scripts": {
-		"fixAudit": "node .scripts/run-script.js audit fix",
-		"compile": "node .scripts/run-script.js compile",
-		"lint": "node .scripts/run-script.js lint",
-		"install": "node .scripts/run-command.js npm install",
-		"auditFix": "node .scripts/run-command.js npm audit fix",
-		"update-readme": "node .scripts/update-readme.js"
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint . --ext .ts,.tsx",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.0",
+		"@types/vscode": "^1.34.0",
+		"@typescript-eslint/eslint-plugin": "^3.0.2",
+		"@typescript-eslint/parser": "^3.0.2",
+		"eslint": "^7.1.0",
+		"typescript": "^4.0.2"
 	}
 }
